@@ -13,15 +13,24 @@ depends=(libxft)
 url=https://st.suckless.org
 source=(https://dl.suckless.org/$pkgname/$pkgname-$pkgver.tar.gz
         terminfo.patch
+        set-hack-font.patch
+        https://st.suckless.org/patches/clipboard/st-clipboard-0.8.3.diff
+        https://st.suckless.org/patches/gruvbox/st-gruvbox-dark-0.8.2.diff
         README.terminfo.rst)
-sha256sums=(939ae3da237e7c9489694853c205c7cbd5f2a2f0c17fe41a07477f1df8e28552
-            f9deea445a5c6203a0e8e699f3c3b55e27275f17fb408562c4dd5d649edeea23
-            0ebcbba881832adf9c98ce9fe7667c851d3cc3345077cb8ebe32702698665be2)
+sha256sums=('939ae3da237e7c9489694853c205c7cbd5f2a2f0c17fe41a07477f1df8e28552'
+            'f9deea445a5c6203a0e8e699f3c3b55e27275f17fb408562c4dd5d649edeea23'
+            '0e1f7265c1b23d5344864ca63efd28af74e6f23a6f813530fe3ae3a98d226f12'
+            '0f5ce33953abce74a9da3088ea35bf067a9a4cfeb9fe6ea9800268ce69e436c0'
+            '4eb3d5eda53a0a77f7438c575d09909f3f7dc462d12e0e4b9d40a7aa64e01b2e'
+            '0ebcbba881832adf9c98ce9fe7667c851d3cc3345077cb8ebe32702698665be2')
 _sourcedir=$pkgname-$pkgver
 _makeopts="--directory=$_sourcedir"
 
 prepare() {
-  patch --directory="$_sourcedir" --strip=0 < terminfo.patch
+  patch --directory="$_sourcedir" -p0 < terminfo.patch
+  patch --directory="$_sourcedir" -p1 < st-clipboard-0.8.3.diff
+  patch --directory="$_sourcedir" -p1 < st-gruvbox-dark-0.8.2.diff
+  patch --directory="$_sourcedir" -p1 < set-hack-font.patch
 
   # This package provides a mechanism to provide a custom config.h. Multiple
   # configuration states are determined by the presence of two files in
