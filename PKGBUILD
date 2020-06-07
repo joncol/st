@@ -16,12 +16,14 @@ source=(https://dl.suckless.org/$pkgname/$pkgname-$pkgver.tar.gz
         https://st.suckless.org/patches/alpha/st-alpha-0.8.2.diff
         https://st.suckless.org/patches/clipboard/st-clipboard-0.8.3.diff
         https://st.suckless.org/patches/gruvbox/st-gruvbox-dark-0.8.2.diff
+        https://st.suckless.org/patches/vertcenter/st-vertcenter-20180320-6ac8c8a.diff
         README.terminfo.rst)
 md5sums=('114160c0746dee0b1763e56dc3b9605b'
          'da701034fc5463ded7d9944fe42014ab'
          '9258f1585627afab76a0a36a96970420'
          '3022fff42f642c0189b4c135e94292db'
          '08a5f4549f1a6b8b3885f0a2b1f80783'
+         '51106ec8ff04d64029401421bbc57ab5'
          '25df7a6ec8e78f8910769730d9c00022')
 
 
@@ -29,9 +31,10 @@ _sourcedir=$pkgname-$pkgver
 _makeopts="--directory=$_sourcedir"
 
 prepare() {
-  patch --directory="$_sourcedir" -p0 < terminfo.patch
-  patch --directory="$_sourcedir" -p1 < st-alpha-0.8.2.diff
-  patch --directory="$_sourcedir" -p1 < st-clipboard-0.8.3.diff
+  patch --directory="$_sourcedir" -Np0 < terminfo.patch
+  patch --directory="$_sourcedir" -Np1 < st-alpha-0.8.2.diff
+  patch --directory="$_sourcedir" -Np1 < st-clipboard-0.8.3.diff
+  patch --directory="$_sourcedir" -Np1 < st-vertcenter-20180320-6ac8c8a.diff
 
   # This package provides a mechanism to provide a custom config.h. Multiple
   # configuration states are determined by the presence of two files in
