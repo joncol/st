@@ -4,7 +4,7 @@
 # Contributor: Christoph Vigano <mail@cvigano.de>
 
 pkgname=st
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc='A simple virtual terminal emulator for X.'
 arch=('i686' 'x86_64' 'armv7h')
@@ -18,14 +18,13 @@ source=(https://dl.suckless.org/$pkgname/$pkgname-$pkgver.tar.gz
         https://st.suckless.org/patches/gruvbox/st-gruvbox-dark-0.8.2.diff
         https://st.suckless.org/patches/vertcenter/st-vertcenter-20180320-6ac8c8a.diff
         README.terminfo.rst)
-md5sums=('114160c0746dee0b1763e56dc3b9605b'
+md5sums=('e00b074c0e5d55513745c99f027b7a34'
          'da701034fc5463ded7d9944fe42014ab'
          '9258f1585627afab76a0a36a96970420'
          '3022fff42f642c0189b4c135e94292db'
          '08a5f4549f1a6b8b3885f0a2b1f80783'
          '51106ec8ff04d64029401421bbc57ab5'
          '25df7a6ec8e78f8910769730d9c00022')
-
 
 _sourcedir=$pkgname-$pkgver
 _makeopts="--directory=$_sourcedir"
